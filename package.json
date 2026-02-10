@@ -1,0 +1,16 @@
+{
+  "name": "sney-bot",
+  "version": "1.0.0",
+  "description": "Asistente Sney con IA y BCV",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@bot-whatsapp/bot": "latest",
+    "@bot-whatsapp/provider/baileys": "latest",
+    "@bot-whatsapp/database/mock": "latest",
+    "axios": "latest",
+    "fs": "latest"
+  }
+}
