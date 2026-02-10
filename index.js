@@ -3,33 +3,19 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 const qrcode = require('qrcode-terminal');
 
-/**
- * FLUJO DE BIENVENIDA
- * Esto es lo que responderá el bot cuando alguien escriba "hola"
- */
-const flowPrincipal = addKeyword(['hola', 'ole', 'buenas'])
-    .addAnswer('¡Hola! Soy Sney. Ya estoy activo y listo para trabajar.');
+const flowPrincipal = addKeyword(['hola']).addAnswer('Sney activo y escuchando.');
 
-/**
- * FUNCIÓN PRINCIPAL
- * Aquí es donde ocurre la magia del QR
- */
 const main = async () => {
     const adapterDB = new MockAdapter();
     const adapterFlow = createFlow([flowPrincipal]);
     const adapterProvider = createProvider(BaileysProvider);
 
-    /**
-     * FUERZA EL DIBUJO DEL QR EN LA PANTALLA NEGRA
-     * Esta es la parte que nos faltaba para que no pida el archivo .png
-     */
+    // ESTA ES LA LLAVE: Fuerza a la terminal a dibujar el QR
     adapterProvider.on('qr', (qr) => {
-        console.clear(); 
-        console.log('------------------------------------------------------');
-        console.log('ESCANEA EL CÓDIGO QR CON TU WHATSAPP BUSINESS:');
-        console.log('------------------------------------------------------');
+        console.log('--------------------------------------------------');
+        console.log('¡AQUÍ ESTÁ TU CÓDIGO QR! ESCANEA AHORA:');
         qrcode.generate(qr, { small: true });
-        console.log('------------------------------------------------------');
+        console.log('--------------------------------------------------');
     });
 
     createBot({
