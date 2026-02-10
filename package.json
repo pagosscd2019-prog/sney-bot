@@ -11,7 +11,7 @@
     "@bot-whatsapp/bot": "latest",
     "@bot-whatsapp/provider": "latest",
     "@bot-whatsapp/database": "latest",
-    "@adiwajshing/baileys": "latest",
+    "@whiskeysockets/baileys": "latest",
     "axios": "^1.6.0",
     "qrcode-terminal": "latest",
     "wa-sticker-formatter": "latest"
