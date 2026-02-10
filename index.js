@@ -3,19 +3,22 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
 const qrcode = require('qrcode-terminal');
 
-const flowPrincipal = addKeyword(['hola']).addAnswer('Sney activo y escuchando.');
+const flowPrincipal = addKeyword(['hola']).addAnswer('Sney activo.');
 
 const main = async () => {
     const adapterDB = new MockAdapter();
     const adapterFlow = createFlow([flowPrincipal]);
     const adapterProvider = createProvider(BaileysProvider);
 
-    // ESTA ES LA LLAVE: Fuerza a la terminal a dibujar el QR
+    // ESTO VA A BLOQUEAR EL MENSAJE DEL .PNG Y MOSTRAR EL QR
     adapterProvider.on('qr', (qr) => {
-        console.log('--------------------------------------------------');
-        console.log('¡AQUÍ ESTÁ TU CÓDIGO QR! ESCANEA AHORA:');
+        console.clear(); 
+        console.log('--------------------------------------------');
+        console.log('   ESCANEA ESTE CÓDIGO QR AHORA MISMO:');
+        console.log('--------------------------------------------');
         qrcode.generate(qr, { small: true });
-        console.log('--------------------------------------------------');
+        console.log('--------------------------------------------');
+        console.log('Si no ves el cuadrado, aleja el zoom con Ctrl y -');
     });
 
     createBot({
