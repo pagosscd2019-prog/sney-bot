@@ -13,6 +13,7 @@
     "@bot-whatsapp/database": "latest",
     "@adiwajshing/baileys": "latest",
     "axios": "^1.6.0",
-    "qrcode-terminal": "latest"
+    "qrcode-terminal": "latest",
+    "wa-sticker-formatter": "latest"
   }
 }
