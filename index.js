@@ -1,9 +1,9 @@
 const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
-const qrcode = require('qrcode-terminal');
+const qrcode = require('qrcode-terminal'); // <-- Línea añadida para poder ver el QR
 
-// Flujo simple para que no falle
+// Flujo simple que ya vimos que funciona
 const flowPrincipal = addKeyword(['hola', 'buenas', 'info'])
     .addAnswer('¡Hola! Soy Sney. Estoy terminando de configurar mi cerebro.');
 
@@ -12,11 +12,12 @@ const main = async () => {
     const adapterFlow = createFlow([flowPrincipal]);
     const adapterProvider = createProvider(BaileysProvider);
 
-    // Esto dibuja el QR en la pantalla negra
+    // --- BLOQUE AÑADIDO PARA MOSTRAR EL QR EN PANTALLA ---
     adapterProvider.on('qr', (qr) => {
         console.log("ESCANEA ESTE CÓDIGO QR:");
         qrcode.generate(qr, { small: true });
     });
+    // ----------------------------------------------------
 
     createBot({
         flow: adapterFlow,
