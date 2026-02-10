@@ -1,24 +1,19 @@
 const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot');
 const BaileysProvider = require('@bot-whatsapp/provider/baileys');
 const MockAdapter = require('@bot-whatsapp/database/mock');
-const qrcode = require('qrcode-terminal');
-
-const flowPrincipal = addKeyword(['hola']).addAnswer('Sney activo.');
 
 const main = async () => {
     const adapterDB = new MockAdapter();
-    const adapterFlow = createFlow([flowPrincipal]);
+    const adapterFlow = createFlow([addKeyword(['hola']).addAnswer('Sney activo.')]);
     const adapterProvider = createProvider(BaileysProvider);
 
-    // ESTO VA A BLOQUEAR EL MENSAJE DEL .PNG Y MOSTRAR EL QR
+    // ESTA ES LA SOLUCIÓN REAL:
     adapterProvider.on('qr', (qr) => {
-        console.clear(); 
-        console.log('--------------------------------------------');
-        console.log('   ESCANEA ESTE CÓDIGO QR AHORA MISMO:');
-        console.log('--------------------------------------------');
-        qrcode.generate(qr, { small: true });
-        console.log('--------------------------------------------');
-        console.log('Si no ves el cuadrado, aleja el zoom con Ctrl y -');
+        const url = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(qr)}`;
+        console.log('************************************************');
+        console.log('PARA VER TU QR, COPIA Y PEGA ESTE LINK EN TU NAVEGADOR:');
+        console.log(url);
+        console.log('************************************************');
     });
 
     createBot({
