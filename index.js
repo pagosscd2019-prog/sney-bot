@@ -17,12 +17,12 @@ async function obtenerTasaBCV() {
     }
 }
 
-// Usamos addKeyword(null) para que atrape cualquier mensaje
-const flowPrincipal = addKeyword(null)
+// Usamos addKeyword(null) para que atrape cualquier mensaje de los clientes
+const flowPrincipal = addKeyword([null])
     .addAction(async (ctx, { flowDynamic }) => {
         const tasa = await obtenerTasaBCV();
-        // Aquí Sney usará tus archivos de texto y la tasa
-        await flowDynamic(`Sney está procesando... (Tasa actual: ${tasa})`);
+        // Sney ya tiene el motor encendido
+        await flowDynamic(`Sney está procesando tu solicitud... (Tasa actual: ${tasa})`);
     });
 
 const main = async () => {
@@ -30,7 +30,7 @@ const main = async () => {
     const adapterFlow = createFlow([flowPrincipal]);
     const adapterProvider = createProvider(BaileysProvider);
 
-    // ESTO FUERZA EL QR EN LA PANTALLA
+    // ESTO FUERZA EL QR EN LA PANTALLA NEGRA DE LOS LOGS
     adapterProvider.on('qr', (qr) => {
         console.log("ESCANEAME POR FAVOR:");
         qrcode.generate(qr, { small: true });
