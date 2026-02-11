@@ -67,8 +67,8 @@ const main = async () => {
       console.log(`🌐 Servidor: http://localhost:${PORT}`);
     });
 
-    // Portal QR
-    QRPortal();
+    // Portal QR - COMENTADO porque ya tenemos servidor Express
+    // QRPortal();
   } catch (error) {
     console.error('❌ Error fatal:', error);
     process.exit(1);
