@@ -12,7 +12,7 @@ const main = async () => {
   try {
     console.log('🚀 Iniciando bot...');
     
-    // IMPORTANTE: Para versión 0.1.35, baileys viene incluido en provider
+    // USANDO EL PAQUETE CORRECTO (sin barra)
     const adapterProvider = createProvider(require('@bot-whatsapp/provider-baileys'), {
       authPath: './sessions',
       onQR: async (qr) => {
