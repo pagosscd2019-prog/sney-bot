@@ -1,34 +1,19 @@
 {
   "name": "sney-bot",
   "version": "1.0.0",
-  "description": "Bot de WhatsApp con @bot-whatsapp",
+  "description": "Bot de WhatsApp Sney",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [
-    "whatsapp",
-    "bot",
-    "chatbot"
-  ],
-  "author": "Tu Nombre",
-  "license": "ISC",
   "dependencies": {
-    "@bot-whatsapp/bot": "^1.9.1",
-    "@bot-whatsapp/baileys": "0.1.0-alpha.13",
-    "@bot-whatsapp/provider": "^1.7.3",
-    "@bot-whatsapp/database": "^1.5.3",
-    "@bot-whatsapp/cli": "^1.1.4",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "@bot-whatsapp/bot": "latest",
+    "@bot-whatsapp/database": "latest",
+    "@bot-whatsapp/provider": "latest",
+    "@bot-whatsapp/portal": "latest",
+    "qrcode-terminal": "latest"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
+    "node": ">=20"
   }
 }
