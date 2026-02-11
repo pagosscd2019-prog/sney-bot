@@ -12,12 +12,11 @@ const main = async () => {
   try {
     console.log('🚀 Iniciando bot...');
     
-    // DEBUG: Ver estructura del provider
+    // CORRECCIÓN: Acceder a BaileysProvider.BaileysProvider
     const BaileysProvider = require('@bot-whatsapp/provider-baileys');
     console.log('🔍 BaileysProvider keys:', Object.keys(BaileysProvider));
-    console.log('🔍 BaileysProvider type:', typeof BaileysProvider);
     
-    const adapterProvider = createProvider(BaileysProvider, {
+    const adapterProvider = createProvider(BaileysProvider.BaileysProvider, {
       authPath: './sessions',
       onQR: async (qr) => {
         console.log('🔄 QR recibido...');
