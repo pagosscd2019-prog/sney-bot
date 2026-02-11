@@ -1,19 +1,19 @@
 {
   "name": "sney-bot",
   "version": "1.0.0",
-  "description": "Bot de WhatsApp Sney - SCD2019 Coolify",
+  "description": "Bot de WhatsApp Sney - Versión Estable para Coolify",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "@bot-whatsapp/bot": "latest",
-    "@bot-whatsapp/database": "latest",
-    "@bot-whatsapp/provider": "latest",
-    "@bot-whatsapp/portal": "latest",
-    "@whiskeysockets/baileys": "latest",
+    "@bot-whatsapp/bot": "0.1.35",
+    "@bot-whatsapp/database": "0.1.35",
+    "@bot-whatsapp/provider": "0.1.35",
+    "@bot-whatsapp/portal": "0.1.35",
+    "@whiskeysockets/baileys": "6.6.0",
     "wa-sticker-formatter": "latest",
-    "pino": "^8.0.0",
+    "pino": "8.16.1",
     "express": "latest",
     "qrcode-terminal": "latest"
   },
