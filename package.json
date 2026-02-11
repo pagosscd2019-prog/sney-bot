@@ -1,27 +1,19 @@
-cat > package.json << 'EOF'
 {
   "name": "sney-bot",
   "version": "1.0.0",
-  "description": "Bot de WhatsApp Sney - Versión Estable para Coolify",
+  "description": "Bot de WhatsApp Sney",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "@bot-whatsapp/bot": "^1.9.1",
-    "@bot-whatsapp/baileys": "0.1.0-alpha.13",
-    "@bot-whatsapp/provider": "^1.7.3",
-    "@bot-whatsapp/portal": "^1.0.5",
-    "express": "^4.18.2",
-    "qrcode": "^1.5.4",
-    "qrcode-terminal": "^0.12.0"
+    "@bot-whatsapp/bot": "1.9.1",
+    "@bot-whatsapp/provider": "1.7.3",
+    "@bot-whatsapp/portal": "1.0.5",
+    "express": "4.18.2",
+    "qrcode": "1.5.4"
   },
   "engines": {
     "node": ">=18"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
-EOF
