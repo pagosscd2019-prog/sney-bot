@@ -11,6 +11,7 @@
     "@bot-whatsapp/database": "latest",
     "@bot-whatsapp/provider": "latest",
     "@bot-whatsapp/portal": "latest",
+    "@bot-whatsapp/baileys": "latest",
     "qrcode-terminal": "latest"
   },
   "engines": {
