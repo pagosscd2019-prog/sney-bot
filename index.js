@@ -1,72 +1,34 @@
-const { createBot, createProvider, createFlow } = require('@bot-whatsapp/bot');
-const fs = require('fs');
-const path = require('path');
-const qrcode = require('qrcode');
+const { Client, LocalAuth } = require('whatsapp-web.js');
+const qrcode = require('qrcode-terminal');
 const express = require('express');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const main = async () => {
-  try {
-    console.log('🚀 Iniciando bot...');
-    
-    // Para v0.1.20, la importación es diferente
-    const adapterProvider = createProvider(require('@bot-whatsapp/provider-baileys'), {
-      authPath: './sessions',
-      onQR: async (qr) => {
-        console.log('🔄 QR recibido...');
-        console.log('⚠️  QR en texto (primeros 100 chars):', qr.substring(0, 100) + '...');
-        // También guardamos como imagen por si acaso
-        try {
-          await qrcode.toFile(
-            path.join(__dirname, 'bot.qr.png'),
-            qr,
-            { width: 300, margin: 2 }
-          );
-          console.log('✅ QR guardado como imagen');
-        } catch (error) {
-          console.log('⚠️  No se pudo guardar QR como imagen');
-        }
-      }
-    });
+const client = new Client({
+  authStrategy: new LocalAuth(),
+  puppeteer: { headless: true, args: ['--no-sandbox'] }
+});
 
-    createBot({
-      flow: createFlow([]),
-      provider: adapterProvider,
-      database: null,
-    });
+client.on('qr', qr => {
+  console.log('🔄 Escanea este QR con WhatsApp:');
+  qrcode.generate(qr, { small: true }); // Muestra QR en terminal
+});
 
-    app.use(express.static(__dirname));
-    
-    app.get('/health', (req, res) => {
-      res.json({ 
-        status: 'online', 
-        bot: 'SNEY-OFICIAL',
-        version: '0.1.20'
-      });
-    });
-    
-    app.get('/', (req, res) => {
-      res.send(`
-        <html>
-          <body style="text-align:center;padding:50px;">
-            <h1>🤖 Bot WhatsApp</h1>
-            <p>Escanea el QR en WhatsApp -> Dispositivos vinculados</p>
-            <p><strong>QR en consola/logs</strong></p>
-            <p><a href="/health">Estado del bot</a></p>
-          </body>
-        </html>
-      `);
-    });
+client.on('ready', () => {
+  console.log('✅ Bot listo!');
+});
 
-    app.listen(PORT, () => {
-      console.log(`🌐 Servidor: http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error('❌ Error fatal:', error);
-    process.exit(1);
-  }
-};
+client.initialize();
 
-main();
+app.get('/', (req, res) => {
+  res.send('<h1>🤖 Bot WhatsApp Funcionando</h1>');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'online', client: client.info ? 'connected' : 'connecting' });
+});
+
+app.listen(PORT, () => {
+  console.log(`🌐 Servidor: http://localhost:${PORT}`);
+});
