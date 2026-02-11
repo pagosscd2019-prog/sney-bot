@@ -1,5 +1,5 @@
-const { createBot, createProvider, createFlow, addKeyword, addAnswer } = require('@bot-whatsapp/bot');
-const BaileysProvider = require('@bot-whatsapp/provider/baileys');
+const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot');
+const BaileysProvider = require('@bot-whatsapp/baileys');  
 const MockAdapter = require('@bot-whatsapp/database/mock');
 const express = require('express');
 const app = express();
