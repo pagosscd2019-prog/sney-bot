@@ -1,30 +1,34 @@
 {
   "name": "sney-bot",
-  "version": "3.0.0",
-  "description": "Bot de WhatsApp SNEY con sistema de 27 módulos SCD2019",
+  "version": "1.0.0",
+  "description": "Bot de WhatsApp con @bot-whatsapp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "chatbot"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC",
   "dependencies": {
-    "@bot-whatsapp/bot": "^0.2.6",
-    "@bot-whatsapp/baileys": "^0.2.6",
-    "express": "^4.18.2",
-    "qrcode-terminal": "^0.12.0"
+    "@bot-whatsapp/bot": "^1.9.1",
+    "@bot-whatsapp/baileys": "0.1.0-alpha.13",
+    "@bot-whatsapp/provider": "^1.7.3",
+    "@bot-whatsapp/database": "^1.5.3",
+    "@bot-whatsapp/cli": "^1.1.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
   },
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=18.0.0",
     "npm": ">=9.0.0"
   },
-  "keywords": [
-    "whatsapp-bot",
-    "scd2019",
-    "pagos",
-    "servicios",
-    "venezuela"
-  ],
-  "author": "Pagos y Servicios SCD2019",
-  "license": "ISC"
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
