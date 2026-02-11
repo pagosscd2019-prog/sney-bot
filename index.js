@@ -12,8 +12,12 @@ const main = async () => {
   try {
     console.log('🚀 Iniciando bot...');
     
-    // USANDO EL PAQUETE CORRECTO (sin barra)
-    const adapterProvider = createProvider(require('@bot-whatsapp/provider-baileys'), {
+    // DEBUG: Ver estructura del provider
+    const BaileysProvider = require('@bot-whatsapp/provider-baileys');
+    console.log('🔍 BaileysProvider keys:', Object.keys(BaileysProvider));
+    console.log('🔍 BaileysProvider type:', typeof BaileysProvider);
+    
+    const adapterProvider = createProvider(BaileysProvider, {
       authPath: './sessions',
       onQR: async (qr) => {
         console.log('🔄 QR recibido...');
@@ -44,7 +48,7 @@ const main = async () => {
       res.json({ 
         status: 'online', 
         bot: 'SNEY-OFICIAL',
-        version: '0.1.35'
+        version: '0.1.38'
       });
     });
     
