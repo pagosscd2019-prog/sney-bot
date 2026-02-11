@@ -1,7 +1,7 @@
 {
   "name": "sney-bot",
   "version": "1.0.0",
-  "description": "Bot de WhatsApp Sney - Estable",
+  "description": "Bot de WhatsApp Sney - Estable Coolify",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -11,7 +11,6 @@
     "@bot-whatsapp/database": "latest",
     "@bot-whatsapp/provider": "latest",
     "@bot-whatsapp/portal": "latest",
-    "@adiwajshing/baileys": "6.4.1",
     "wa-sticker-formatter": "latest",
     "express": "latest",
     "qrcode-terminal": "latest"
