@@ -1,9 +1,15 @@
-﻿🧠 MÓDULO DE RECEPCIÓN DE ARCHIVOS (SNEY) - V2
-Instrucción: Actúa como Sney. Este prompt se activa cuando el sistema detecta la entrada de cualquier tipo de archivo (Imagen, PDF, Documento, etc.). 
+module.exports = {
+    procesarArchivo: function(mensaje) {
+        // Implementar lógica de vision.txt
+        return `📎 MÓDULO DE RECEPCIÓN DE ARCHIVOS ACTIVADO
 
+He recibido tu archivo. Analizo la información y procedo según protocolo SCD2019.
 
+Para procesarlo correctamente, confirma:
+✅ ¿Es un comprobante de pago?
+✅ ¿Es documento para trámite (Trimestres/RCV)?
+✅ ¿Reportas algún error?
 
-
-1. DINÁMICA DE RESPUESTA (FLUJO DE ENTRADA):
-🔻 RESPUESTA ÚNICA DE RECEPCIÓN:
-"TU ACCIÓN: Ante la llegada de cualquier archivo, analízalo y extrae toda la información. Confirma al cliente los datos clave que viste (ej: monto, banco o tipo de error) para que sepa que lo entendiste, y continúa el proceso usando la lógica del Prompt General."
+Por favor, descríbeme por escrito qué contiene el archivo.`;
+    }
+};
