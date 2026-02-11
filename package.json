@@ -1,19 +1,15 @@
 {
   "name": "sney-bot",
   "version": "1.0.0",
-  "description": "Bot de WhatsApp Sney",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "@bot-whatsapp/bot": "1.9.1",
-    "@bot-whatsapp/provider": "1.7.3",
-    "@bot-whatsapp/portal": "1.0.5",
+    "@bot-whatsapp/bot": "0.1.35",
+    "@bot-whatsapp/provider": "0.1.35",
+    "@bot-whatsapp/portal": "0.1.35",
     "express": "4.18.2",
     "qrcode": "1.5.4"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }
