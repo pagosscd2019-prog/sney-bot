@@ -9,31 +9,27 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const main = async () => {
-  console.log('🚀 Iniciando bot de WhatsApp...');
+  console.log('🚀 Iniciando bot...');
   
-  // IMPORTANTE: @bot-whatsapp/provider incluye baileys
-  const BaileysProvider = require('@bot-whatsapp/provider/baileys');
-  
-  const adapterProvider = createProvider(BaileysProvider, {
+  // IMPORTANTE: Para versión 0.1.35, baileys viene incluido en provider
+  const adapterProvider = createProvider(require('@bot-whatsapp/provider/baileys'), {
     authPath: './sessions',
     onQR: async (qr) => {
       console.log('🔄 QR recibido...');
-      
       try {
-        // Guardar QR como imagen
         await qrcode.toFile(
           path.join(__dirname, 'bot.qr.png'),
           qr,
           { width: 300, margin: 2 }
         );
-        console.log('✅ QR guardado como bot.qr.png');
+        console.log('✅ QR guardado');
       } catch (error) {
-        console.error('❌ Error:', error.message);
+        console.log('⚠️  QR en texto:', qr.substring(0, 50) + '...');
       }
     }
   });
 
-  // Bot básico
+  // Bot mínimo
   createBot({
     flow: createFlow([]),
     provider: adapterProvider,
@@ -44,7 +40,11 @@ const main = async () => {
   app.use(express.static(__dirname));
   
   app.get('/health', (req, res) => {
-    res.json({ status: 'online', bot: 'SNEY-OFICIAL' });
+    res.json({ 
+      status: 'online', 
+      bot: 'SNEY-OFICIAL',
+      version: '0.1.35'
+    });
   });
   
   app.get('/', (req, res) => {
@@ -63,5 +63,6 @@ const main = async () => {
     console.log(`🌐 Servidor: http://localhost:${PORT}`);
   });
 
+  // Portal QR
   QRPortal();
 };
