@@ -15,7 +15,16 @@
     "qrcode-terminal": "^0.12.0"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
-  }
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "scd2019",
+    "pagos",
+    "servicios",
+    "venezuela"
+  ],
+  "author": "Pagos y Servicios SCD2019",
+  "license": "ISC"
 }
